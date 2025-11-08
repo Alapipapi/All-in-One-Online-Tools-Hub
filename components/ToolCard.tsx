@@ -16,7 +16,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, onClick }) => {
         {tool.icon}
       </div>
       <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">{tool.name}</h3>
-      <p className="text-gray-600 dark:text-gray-400">{tool.description}</p>
+      <p className="text-gray-600 dark:text-gray-300">{tool.description}</p>
     </div>
   );
 };

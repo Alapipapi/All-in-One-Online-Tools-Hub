@@ -7,7 +7,7 @@ const About: React.FC = () => {
       <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight text-center">
         About <span className="text-blue-600 dark:text-blue-500">Tools Hub</span>
       </h1>
-      <div className="mt-8 prose lg:prose-xl dark:prose-invert mx-auto text-gray-600">
+      <div className="mt-8 prose lg:prose-xl dark:prose-invert mx-auto">
         <p className="lead text-center">
           Welcome to the All-in-One Online Tools Hub! Our mission is to provide a collection of simple, free, and efficient utilities to help you with your everyday digital tasks. No need to browse multiple websites—we've gathered the essentials right here for you.
         </p>
@@ -26,7 +26,7 @@ const About: React.FC = () => {
                     </div>
                     <div>
                         <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">{tool.name}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{tool.description}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{tool.description}</p>
                     </div>
                 </div>
             ))}

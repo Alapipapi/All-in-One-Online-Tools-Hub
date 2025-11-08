@@ -7,6 +7,21 @@ interface HeaderProps {
   toggleDarkMode: () => void;
 }
 
+const ToolHubIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <g transform="rotate(-15 16 16)">
+            <path d="M19 5H13C11.3431 5 10 6.34315 10 8V10H22V8C22 6.34315 20.6569 5 19 5Z"/>
+            <rect x="6" y="10" width="20" height="14" rx="3"/>
+            <g fill="rgba(255,255,255,0.4)">
+                <circle cx="12" cy="15" r="1.5" />
+                <circle cx="17" cy="15" r="1.5" />
+                <circle cx="12" cy="19" r="1.5" />
+                <circle cx="17" cy="19" r="1.5" />
+            </g>
+        </g>
+    </svg>
+);
+
 const MoonIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
@@ -48,9 +63,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, isDarkMode, to
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
-             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V3m0 18v-3M5.636 5.636l-1.414-1.414m15.556 15.556l-1.414-1.414M18.364 5.636l-1.414 1.414m-11.314 11.314l-1.414 1.414" />
-             </svg>
+             <ToolHubIcon className="h-8 w-8 text-blue-600" />
             <span className="ml-3 text-2xl font-bold text-gray-800 dark:text-gray-100">Tools Hub</span>
           </div>
           <div className="flex items-center space-x-4 sm:space-x-8">

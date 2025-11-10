@@ -1,17 +1,17 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { UnitType } from '../../types';
 
+const units = {
+  [UnitType.Length]: { meters: 1, kilometers: 1000, miles: 1609.34, feet: 0.3048, inches: 0.0254 },
+  [UnitType.Weight]: { kilograms: 1, grams: 0.001, pounds: 0.453592, ounces: 0.0283495 },
+  [UnitType.Temperature]: {},
+};
+
 const UnitConverter: React.FC = () => {
   const [unitType, setUnitType] = useState<UnitType>(UnitType.Length);
   const [inputValue, setInputValue] = useState('1');
   const [fromUnit, setFromUnit] = useState('meters');
   const [toUnit, setToUnit] = useState('feet');
-
-  const units = {
-    [UnitType.Length]: { meters: 1, kilometers: 1000, miles: 1609.34, feet: 0.3048, inches: 0.0254 },
-    [UnitType.Weight]: { kilograms: 1, grams: 0.001, pounds: 0.453592, ounces: 0.0283495 },
-    [UnitType.Temperature]: {},
-  };
 
   const handleTypeChange = (newType: UnitType) => {
     setUnitType(newType);
@@ -45,14 +45,14 @@ const UnitConverter: React.FC = () => {
     const fromValueInBase = inputNum * units[unitType][fromUnit];
     const toValue = fromValueInBase / units[unitType][toUnit];
     return toValue.toFixed(4);
-  }, [inputValue, fromUnit, toUnit, unitType, units]);
+  }, [inputValue, fromUnit, toUnit, unitType]);
 
   const outputValue = useMemo(() => convert(), [convert]);
   
   const currentUnits = useMemo(() => {
     if (unitType === UnitType.Temperature) return ['celsius', 'fahrenheit', 'kelvin'];
     return Object.keys(units[unitType]);
-  }, [unitType, units]);
+  }, [unitType]);
 
   return (
     <div className="space-y-6">

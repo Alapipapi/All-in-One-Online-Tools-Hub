@@ -125,7 +125,6 @@ const PdfTools: React.FC = () => {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newFiles = event.target.files;
       if (newFiles && newFiles.length > 0) {
-        // FIX: Explicitly type `file` as `File` to address potential type inference issues where `file` might be considered `unknown`.
         const pdfFiles = Array.from(newFiles).filter((file: File) => file.type === 'application/pdf');
         setFiles(prevFiles => [...prevFiles, ...pdfFiles]);
       }
@@ -153,7 +152,6 @@ const PdfTools: React.FC = () => {
         handleDrag(e);
         setIsDragging(false);
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            // FIX: Explicitly type `file` as `File` to address potential type inference issues where `file` might be considered `unknown`.
             const droppedFiles = Array.from(e.dataTransfer.files).filter((file: File) => file.type === 'application/pdf');
             if (droppedFiles.length > 0) {
                 setFiles(prevFiles => [...prevFiles, ...droppedFiles]);
@@ -417,6 +415,10 @@ const PdfTools: React.FC = () => {
                 canvas.width = viewport.width;
                 canvas.height = viewport.height;
                 const context = canvas.getContext('2d');
+                if (!context) {
+                    console.error(`Could not get canvas context for page ${i + 1}`);
+                    continue;
+                }
 
                 await page.render({ canvasContext: context, viewport }).promise;
                 

@@ -21,7 +21,6 @@ const About: React.FC = () => {
             {TOOLS.map(tool => (
                 <div key={tool.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 flex items-start space-x-4">
                     <div className="flex-shrink-0 text-blue-500">
-                        {/* FIX: By using a more specific type for `tool.icon` in `types.ts`, `React.cloneElement` can correctly infer props and allow `className` to be passed. */}
                         {React.cloneElement(tool.icon, { className: "w-8 h-8" })}
                     </div>
                     <div>

@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 
 const Calculator: React.FC = () => {
@@ -89,9 +87,9 @@ const Calculator: React.FC = () => {
             <div className="bg-gray-700 rounded p-4 mb-4 text-right text-4xl font-mono break-all h-20 flex items-end justify-end">
                 {display}
             </div>
-            {/* FIX: Added children to all Button components to provide labels and fix missing prop errors. */}
             <div className="grid grid-cols-4 gap-2">
-                <Button onClick={handleClearClick} className="bg-gray-500 hover:bg-gray-600 col-span-2">AC</Button>
+                <Button onClick={handleClearClick} className="bg-gray-500 hover:bg-gray-600">AC</Button>
+                <Button onClick={handleSignChange} className="bg-gray-500 hover:bg-gray-600">+/-</Button>
                 <Button onClick={handlePercentageClick} className="bg-gray-500 hover:bg-gray-600">%</Button>
                 <Button onClick={() => handleOperatorClick('/')} className="bg-orange-500 hover:bg-orange-600">÷</Button>
                 

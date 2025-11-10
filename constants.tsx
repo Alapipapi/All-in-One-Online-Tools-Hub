@@ -1,16 +1,23 @@
-
 import React from 'react';
 import type { Tool } from './types';
+import TextSummarizer from './components/tools/TextSummarizer';
 import UnitConverter from './components/tools/UnitConverter';
 import PdfTools from './components/tools/PdfTools';
 import PasswordGenerator from './components/tools/PasswordGenerator';
 import Calculator from './components/tools/Calculator';
 import ImageCompressor from './components/tools/ImageCompressor';
+import TextAnalyzer from './components/tools/TextAnalyzer';
 
 // SVG Icons as React components
+const SparklesIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.572L16.5 21.75l-.398-1.178a3.375 3.375 0 00-2.456-2.456L12.5 17.25l1.178-.398a3.375 3.375 0 002.456-2.456L16.5 13.5l.398 1.178a3.375 3.375 0 002.456 2.456l1.178.398-1.178.398a3.375 3.375 0 00-2.456 2.456z" />
+    </svg>
+);
+
 const ScaleIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.036.243c-2.132 0-4.14-.354-6.044-.962l-1.551-.463m0 0l-2.62 10.726c-.122.499.106 1.028.589 1.202a5.989 5.989 0 002.036.243c2.132 0 4.14-.354 6.044-.962l1.551-.463m-4.5-8.132c.311.092.622.182.933.267m-1.551-.463c.311.092.622.182.933.267m0 0c-2.132 0-4.14-.354-6.044-.962l-1.551-.463M4.501 19.11l-2.62-10.726c-.122-.499.106-1.028.589-1.202a5.989 5.989 0 012.036-.243c2.132 0 4.14.354 6.044.962l1.551.463" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.036.243c-2.132 0-4.14-.354-6.044-.962l-1.551-.463m0 0l-2.62 10.726c-.122.499.106 1.028.589 1.202a5.989 5.989 0 002.036.243c2.132 0 4.14-.354 6.044-.962l1.551.463m-4.5-8.132c.311.092.622.182.933.267m-1.551-.463c.311.092.622.182.933.267m0 0c-2.132 0-4.14-.354-6.044-.962l-1.551-.463M4.501 19.11l-2.62-10.726c-.122-.499.106-1.028.589-1.202a5.989 5.989 0 012.036-.243c2.132 0 4.14.354 6.044.962l1.551.463" />
   </svg>
 );
 
@@ -38,7 +45,20 @@ const PhotoIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const TextAnalyzerIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+);
+
 export const TOOLS: Tool[] = [
+  {
+    id: 'text-summarizer',
+    name: 'AI Text Summarizer',
+    description: 'Use AI to summarize long articles or text into key points.',
+    icon: <SparklesIcon className="w-12 h-12 text-blue-500" />,
+    component: TextSummarizer,
+  },
   {
     id: 'unit-converter',
     name: 'Unit Converter',
@@ -73,5 +93,12 @@ export const TOOLS: Tool[] = [
     description: 'Reduce the file size of your images without losing quality.',
     icon: <PhotoIcon className="w-12 h-12 text-blue-500" />,
     component: ImageCompressor,
+  },
+  {
+    id: 'text-analyzer',
+    name: 'Text Analyzer',
+    description: 'Count words, characters, sentences, and paragraphs.',
+    icon: <TextAnalyzerIcon className="w-12 h-12 text-blue-500" />,
+    component: TextAnalyzer,
   },
 ];
